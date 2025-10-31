@@ -8,8 +8,8 @@ import "swiper/css";
 import "swiper/css/pagination"; 
 import "swiper/css/navigation";
 //import the requiredmodules
-import {Pagination} from "swiper/modules";
-import { Navigation } from "swiper/modules";
+import {Pagination, Navigation} from "swiper/modules";
+
 
 
 const genres = ["Fiction", "Fantasy", "Romance", "Thriller", "Horror"]
@@ -39,7 +39,6 @@ const BestSellers = () => {
             </div>
                 <Swiper
                     navigation={true}
-                    modules={[Navigation]}
                     slidesPerView={1}
                     spaceBetween={30}
                     breakpoints={{
