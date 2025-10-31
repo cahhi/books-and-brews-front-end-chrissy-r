@@ -1,0 +1,59 @@
+[
+
+    {
+        "id": 1,
+        "title": "There's Pumpkin About You",
+        "author": "Athena Carstairs",
+        "description": "One deteremined party planner + one grumpy pumpkin farmer = a fall to remember...",
+        "genre": "romance",
+        "trending": true,
+        "coverImage": "there-pumpkin-about-you.png",
+        "retailPrice": 18.99,
+        "salePrice": 12.99
+    },
+     {
+        "id": 2,
+        "title": "The Pumpkin Spice Cafe",
+        "author": "Laurie Gilmore",
+        "description": "A cozy romantic mystery for fans of Gilmore Girls with a grumpy x sunshine dynamic, a small-town setting, and a HEA guaranteed!",
+        "genre": "romance",
+        "trending": true,
+        "coverImage": "the-pumpkin-spice-cafe.png",
+        "retailPrice": 19.99,
+        "salePrice": 15.99
+    },
+     {
+        "id": 3,
+        "title": "Fourth Wing",
+        "author": "Rebecca Yarros",
+        "description": "Follow Violet Sorrengail, a young woman forced into a brutal training program to become a dragon rider, navigating danger, rivalry, and unexpected bonds in the kingdom of Navarre.",
+        "genre": "fantasy",
+        "trending": true,
+        "coverImage": "fourth-wing.png",
+        "retailPrice": 25.99,
+        "salePrice": 19.99
+    },
+       {
+        "id": 4,
+        "title": "Not Quite Dead Yet",
+        "author": "Holly Jackson",
+        "description": "Could you solve your own murder before it’s too late? Catch the killer before the countdown ticks its last second in Holly Jackson’s exhilarating adult debut.",
+        "genre": "thriller",
+        "trending": true,
+        "coverImage": "not-quite-dead.png",
+        "retailPrice": 26.99,
+        "salePrice": 20.99
+    },
+       {
+        "id": 5,
+        "title": "Hot Wax",
+        "author": "M.L. Rio",
+        "description": "Grief, love and rock and roll. After her musician father’s death, one woman sets out to discover the truth about one mysterious night that haunted her for decades.",
+        "genre": "horror",
+        "trending": true,
+        "coverImage": "hot-wax.png",
+        "retailPrice": 29.99,
+        "salePrice": 23.99
+    }
+]
+
