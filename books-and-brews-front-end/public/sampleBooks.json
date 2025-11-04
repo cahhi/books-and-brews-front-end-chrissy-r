@@ -54,6 +54,17 @@
         "coverImage": "hot-wax.png",
         "retailPrice": 29.99,
         "salePrice": 23.99
+    },
+         {
+        "id": 6,
+        "title": "A Soul to Keep",
+        "author": "Opal Reyne",
+        "description": "Reia is a young woman chosen as a sacrifice to a demon-like creature who seeks compansionship in exchange for protecting her village from other demons.",
+        "genre": "romance",
+        "trending": false,
+        "coverImage": "soul-to-keep - Copy.png",
+        "retailPrice": 21.99,
+        "salePrice": 15.99
     }
 ]
 

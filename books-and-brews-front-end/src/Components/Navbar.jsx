@@ -18,7 +18,7 @@ const userMenu = [
 
 
 const Navbar = () => {
-    const currentUser = true; //i am using this to test when a user is "logged in" or not
+    const currentUser = false; //i am using this to test when a user is "logged in" or not
     const [isMenuOpen, setIsMenuOpen] = useState(false);
    /*  console.log(isMenuOpen); used this to check in web dev tools that when I clicked on the user's icon while logged in that the drop down menu would be displayed */
 

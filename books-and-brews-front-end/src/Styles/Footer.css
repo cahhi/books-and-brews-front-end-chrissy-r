@@ -1,0 +1,9 @@
+.footer-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: amber;
+    text-align: center;
+    padding: 15px;
+}

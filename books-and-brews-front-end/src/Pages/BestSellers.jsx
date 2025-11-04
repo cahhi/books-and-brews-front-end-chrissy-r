@@ -17,17 +17,18 @@ const genres = ["Fiction", "Fantasy", "Romance", "Thriller", "Horror"]
 const BestSellers = () => {
 
     const [books, setBooks] = useState([]);
+    const filteredBooks = books.filter((book) => book.trending === true);
 
     {/*Below, I am fetching the data from the sampleBooks.json, parsing the data as JSON, and then making sure the data is being read correctly by using DevTools to check the console.log for the array information */}
     useEffect(() => {
         fetch("sampleBooks.json").then(response => response.json()).then((data)=>setBooks(data))
     }, []);
 
-    console.log(books);
+    /* console.log(books); using this to make sure react is reading the books correctly*/
 
     return(
         <div className="py-10">
-            <h2 className="text-3xl font-semibold mb-6 text-left">BestSellers</h2>
+            <h2 className="text-3xl font-semibold mb-6 text-left">Bestsellers</h2>
             <div>
                 <select name="genre" id="genre">
                     {
@@ -63,7 +64,7 @@ const BestSellers = () => {
                     className="mySwiper"
                 >
                         {
-                            books.length > 0 && books.map((book, index) => (
+                            filteredBooks.length > 0 && filteredBooks.map((book, index) => (
                                     <SwiperSlide key={index}>
                                         <BookCard  book={book} />
                                     </SwiperSlide>
