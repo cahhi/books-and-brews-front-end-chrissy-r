@@ -25,7 +25,7 @@ const BookCard = ({book}) => { {/*Using props to pass book data into the compone
                     <p className="font-medium mb-5">
                         ${book?.salePrice}<span className="line-through font-normal ml-2">${book?.retailPrice}</ span> {/*Added ? to make sure that */}
                     </p>
-                    <button>
+                    <button className="cursor-pointer">
                         <FaShoppingBasket className="" />
                         <span>Add to cart</span>
                     </button>
