@@ -12,7 +12,7 @@ import {Pagination, Navigation} from "swiper/modules";
 
 const HorrorBooks = () => {
 
-     const [books, setBooks] = useState([]);
+   const [books, setBooks] = useState([]);
    const filteredBooks = books.filter((book) => book.genre === "horror");
    
     

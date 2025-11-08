@@ -1,10 +1,33 @@
 import React from "react";
 import { FaShoppingBasket } from "react-icons/fa";
-import { getBookCover } from "../../Components/getBookCover";
+import { getBookCover } from "../../Classes/getBookCover";
 import { Link } from "react-router";
+import { useEffect } from "react";
+
 
 
 const BookCard = ({book}) => { {/*Using props to pass book data into the component*/}
+
+useEffect(() => {
+        fetch("sampleBooks.json").then(Response => Response.json()).then((data) => setBooks(data))
+    }, [])
+
+
+const [count, setCount] = React.useState(1);
+const [bookData, setbookData] = React.useState([]);
+
+const addToCart = () => {
+    let cart = JSON.parse(localStorage.getItem('cart'))
+
+    if(cart){
+     }else{
+        cart=[{
+            setBooks,
+            quantity: count
+        }]
+        console.log(cart);
+    }
+}
 
     return (
         <div className="rounded-lg transition-shadow duration-300">
@@ -25,7 +48,11 @@ const BookCard = ({book}) => { {/*Using props to pass book data into the compone
                     <p className="font-medium mb-5">
                         ${book?.salePrice}<span className="line-through font-normal ml-2">${book?.retailPrice}</ span> {/*Added ? to make sure that */}
                     </p>
-                    <button className="cursor-pointer">
+                    <button
+                    onClick={() => {
+                        addToCart();
+                    }} 
+                    className="cursor-pointer">
                         <FaShoppingBasket className="" />
                         <span>Add to cart</span>
                     </button>
