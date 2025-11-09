@@ -1,6 +1,8 @@
 import React from "react";
 import BooksandBrewsLogo from "../Photos/BooksandBrewsLogo.jpg";
-import { Link } from "react-router";
+
+//updated to use react-router-dom
+import { Link } from "react-router-dom";
 import SurpriseButton from "./SurpriseButton";
 import { FaLinkedin } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";

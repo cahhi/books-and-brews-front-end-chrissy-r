@@ -22,13 +22,14 @@ const RomanceBooks = () => {
    
     
 
-    useEffect(() => {
+/*     useEffect(() => {
         fetch("sampleBooks.json").then(Response => Response.json()).then((data) => setBooks(data))
-    }, [])
+    }, []) */
     
         return(
             <div className="py-10">
                 <h2 className="text-3xl font-semibold mb-6 text-left">Romance</h2>
+
 
                       <Swiper
                             navigation={true}
@@ -67,6 +68,8 @@ const RomanceBooks = () => {
     
             </div>
         )
+
+        
     }
 
 export default RomanceBooks;

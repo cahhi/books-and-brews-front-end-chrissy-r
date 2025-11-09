@@ -1,6 +1,6 @@
 import React from "react";
 import logo from '../Photos/BooksandBrewsLogo.jpg'
-import { Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { FaBook } from "react-icons/fa";
 import { RiUserHeartLine } from "react-icons/ri";
 import { BsBookmarkHeart } from "react-icons/bs";
@@ -67,6 +67,8 @@ const Navbar = () => {
                     <button className="hidden sm:block">
                         <BsBookmarkHeart className="size-6"/>
                     </button>
+                    
+                    {/*orders doesnt exist, should this be here?*/}
                     <Link to="/orders" className="bg-[#A52A2A] p-1 sm:px-5 px-1 flex items-center rounded sm">
                         <TfiShoppingCartFull className="size-5"/>
                         <span className="text-sm font">0</span> {/*I want to show the number of items in the cart that a user has placed*/}

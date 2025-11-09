@@ -1,4 +1,6 @@
-import React from "react";
+// imported use context and context/data
+import React, { useContext } from "react";
+import { DataContext } from "../Context/DataContext";
 import { useState } from "react";
 import { useEffect } from "react";
 import BookCard from "./Books/BookCard";
@@ -12,16 +14,23 @@ import {Pagination, Navigation} from "swiper/modules";
 
 const ThrillerBooks = () => {
 
+    //imports book data from datacontext
+const { allBooks, isLoading } = useContext(DataContext);
+
+  if (isLoading) return <p>Loading thriller books...</p>;
+//established filteredbooks as allbooks port
+  const filteredBooks = allBooks.filter(
+    (book) => (book.genre || "").toLowerCase() === "thriller"
+  );
     
-    
+  /*   
     const [books, setBooks] = useState([]);
     const filteredBooks = books.filter((book) => book.genre === "thriller");
-   
-    
-
+    */
+    /* 
     useEffect(() => {
         fetch("sampleBooks.json").then(Response => Response.json()).then((data) => setBooks(data))
-    }, [])
+    }, []) */
     
         return(
             <div className="py-10">

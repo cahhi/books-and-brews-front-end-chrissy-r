@@ -1,16 +1,16 @@
 import React from "react";
 import { FaShoppingBasket } from "react-icons/fa";
 import { getBookCover } from "../../Classes/getBookCover";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 
 
 const BookCard = ({book}) => { {/*Using props to pass book data into the component*/}
 
-useEffect(() => {
+/* useEffect(() => {
         fetch("sampleBooks.json").then(Response => Response.json()).then((data) => setBooks(data))
-    }, [])
+    }, []) */
 
 
 const [count, setCount] = React.useState(1);

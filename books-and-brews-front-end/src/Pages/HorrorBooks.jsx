@@ -17,9 +17,9 @@ const HorrorBooks = () => {
    
     
 
-    useEffect(() => {
+/*     useEffect(() => {
         fetch("sampleBooks.json").then(Response => Response.json()).then((data) => setBooks(data))
-    }, [])
+    }, []) */
     
         return(
             <div className="py-10">

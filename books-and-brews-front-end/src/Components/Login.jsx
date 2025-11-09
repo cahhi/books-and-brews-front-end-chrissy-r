@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+//updated to react-router-dom in footer login register articles and book card
+import { Link } from "react-router-dom";
 import { FaGoogleDrive } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 

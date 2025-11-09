@@ -20,10 +20,10 @@ const BestSellers = () => {
     const filteredBooks = books.filter((book) => book.trending === true);
 
     {/*Below, I am fetching the data from the sampleBooks.json, parsing the data as JSON, and then making sure the data is being read correctly by using DevTools to check the console.log for the array information */}
-    useEffect(() => {
+  /*   useEffect(() => {
         fetch("sampleBooks.json").then(response => response.json()).then((data)=>setBooks(data))
     }, []);
-
+ */
     /* console.log(books); using this to make sure react is reading the books correctly*/
 
     return(

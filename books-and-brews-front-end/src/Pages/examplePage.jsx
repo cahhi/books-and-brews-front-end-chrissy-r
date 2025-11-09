@@ -9,21 +9,22 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 //import the requiredmodules
 import {Pagination, Navigation} from "swiper/modules";
+import axios from "axios";
 
-const FantasyBooks = () => {
+const ExampleBooks = () => {
 
-     const [books, setBooks] = useState([]);
-   const filteredBooks = books.filter((book) => book.genre === "fantasy");
+   const [books, setBooks] = useState([]);
+   const filteredBooks = books.filter((book) => book.genre === "horror");
    
     
 
-    /* useEffect(() => {
-        fetch("books.json").then(Response => Response.json()).then((data) => setBooks(data))
-    }, [])  */ 
+ /*    useEffect(() => {
+        axios("/api/books").then((Response) => setBooks(Response.data))
+    }, []) */
     
         return(
             <div className="py-10">
-                <h2 className="text-3xl font-semibold mb-6 text-left">Fantasy</h2>
+                <h2 className="text-3xl font-semibold mb-6 text-left">Horror</h2>
 
                       <Swiper
                             navigation={true}
@@ -64,4 +65,4 @@ const FantasyBooks = () => {
         )
 }
 
-export default FantasyBooks;
+export default ExampleBooks;

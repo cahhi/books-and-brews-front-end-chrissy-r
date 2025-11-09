@@ -6,7 +6,7 @@
         "author": "Athena Carstairs",
         "description": "One deteremined party planner + one grumpy pumpkin farmer = a fall to remember...",
         "genre": "romance",
-        "trending": true,
+        "isTrending": true,
         "coverImage": "there-pumpkin-about-you.png",
         "retailPrice": 18.99,
         "salePrice": 12.99
