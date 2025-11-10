@@ -1,7 +1,6 @@
 export default class Genres {
-    constructor(id, title, books){
+    constructor(id, title){
         this.id = id;
         this.title = title;
-        this.books = books; //array of book objects
     }
 }

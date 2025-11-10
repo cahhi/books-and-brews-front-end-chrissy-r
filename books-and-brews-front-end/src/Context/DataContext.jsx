@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import { Author, Genre, Description, Book } from '../Classes/exports';
 import { Component } from "react";
 
 export const DataContext = createContext();
@@ -22,13 +23,31 @@ export const DataProvider = ({children}) => {
 //i would recommend swtiching back to sampleBooks to avoid excess backtracking
         try{
             //const response = await fetch('./test-data/books.json');
-            const response = await fetch('/books.json');
+            /* const response = await fetch('/books.json'); */
+            const response = await fetch('/api/books');
             const data = await response.json();
 
             setAllBooks(data); // store data in state
-             console.log("Fetched books:", data);
+             //console.log("Fetched books:", data); used this to cosnole log data and make sure that calling from API correctly
 
-            console.log(data);
+             data.forEach(book => {
+                let author = new Author(book.author.id, book.author.firstName, book.author.lastName);
+                let genres = [];
+                book.genres.forEach(genre => { 
+                    genres.push(new Genre(genre.id, genre.title))
+                })
+                let description = new Description(
+                    book.description.id,
+                    book.description.summary,
+                    book.description.isTrending,
+                    book.description.salesPrice,
+                    book.description.originalPrice
+                );
+
+                let newBook = new Book(book.id, book.title, author, genres, description); //creating a newBook object that I can use anywhere in my code
+                books.push(newBook);
+             });
+              setAllBooks(books);
 
         } catch(error) {
             console.error(error)
@@ -43,6 +62,10 @@ export const DataProvider = ({children}) => {
         fetchBooks();
      }, []);
 
+     //checking that the state variables for holding data are not null and that this hook executes anytime that a change is detected 
 
-    return <DataContext.Provider value={{allBooks, allAuthors, allGenres, isLoading}}>{children}</DataContext.Provider>
+
+    return <DataContext.Provider value={{isLoading, allBooks, fetchBooks}}>{children}</DataContext.Provider>
+     
+    /* return <DataContext.Provider value={{allBooks, allAuthors, allGenres, isLoading}}>{children}</DataContext.Provider> */
 }

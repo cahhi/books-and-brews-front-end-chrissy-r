@@ -9,6 +9,8 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 //import the requiredmodules
 import {Pagination, Navigation} from "swiper/modules";
+import { useContext } from "react";
+import { DataContext } from "../Context/DataContext";
 
 
 
@@ -16,27 +18,30 @@ const genres = ["Fiction", "Fantasy", "Romance", "Thriller", "Horror"]
 
 const BestSellers = () => {
 
-    const [books, setBooks] = useState([]);
-    const filteredBooks = books.filter((book) => book.trending === true);
+       //imports book data from datacontext
+   const { allBooks, isLoading } = useContext(DataContext);
+   
+     if (isLoading) return <p>Loading bestsellers...</p>;
 
-    {/*Below, I am fetching the data from the sampleBooks.json, parsing the data as JSON, and then making sure the data is being read correctly by using DevTools to check the console.log for the array information */}
-  /*   useEffect(() => {
-        fetch("sampleBooks.json").then(response => response.json()).then((data)=>setBooks(data))
-    }, []);
- */
-    /* console.log(books); using this to make sure react is reading the books correctly*/
+   //established filteredbooks as allbooks port
+    const filteredBooks = allBooks.filter(
+  (book) =>
+    Array.isArray(book.genres) &&
+    book.genres.some((genre) => genre.title?.toLowerCase() === "bestseller")
+);
+
 
     return(
         <div className="py-10">
             <h2 className="text-3xl font-semibold mb-6 text-left">Bestsellers</h2>
             <div>
-                <select name="genre" id="genre">
+                {/* <select name="genre" id="genre">
                     {
                         genres.map((genre, index) => (
                             <option key={index} value={genre}>{genre}</option>
                         ))
                     }
-                </select>
+                </select> */}
             </div>
                 <Swiper
                     navigation={true}

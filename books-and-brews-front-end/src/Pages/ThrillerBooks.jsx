@@ -19,14 +19,20 @@ const { allBooks, isLoading } = useContext(DataContext);
 
   if (isLoading) return <p>Loading thriller books...</p>;
 //established filteredbooks as allbooks port
+ /*  const filteredBooks = allBooks.filter(
+    (book) => (book.genre?.title || "") === "thriller"
+  ); */
+
   const filteredBooks = allBooks.filter(
-    (book) => (book.genre || "").toLowerCase() === "thriller"
-  );
+  (book) =>
+    Array.isArray(book.genres) &&
+    book.genres.some((genre) => genre.title?.toLowerCase() === "thriller")
+);
     
-  /*   
     const [books, setBooks] = useState([]);
-    const filteredBooks = books.filter((book) => book.genre === "thriller");
-    */
+
+    /* const filteredBooks = books.filter((book) => book.genres.id === 3); */
+    
     /* 
     useEffect(() => {
         fetch("sampleBooks.json").then(Response => Response.json()).then((data) => setBooks(data))

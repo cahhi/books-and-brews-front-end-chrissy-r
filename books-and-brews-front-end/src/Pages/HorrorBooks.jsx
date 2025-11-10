@@ -9,11 +9,19 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 //import the requiredmodules
 import {Pagination, Navigation} from "swiper/modules";
+import { useContext } from "react";
+import { DataContext } from "../Context/DataContext";
 
 const HorrorBooks = () => {
 
-   const [books, setBooks] = useState([]);
-   const filteredBooks = books.filter((book) => book.genre === "horror");
+    const { allBooks, isLoading } = useContext(DataContext);
+
+     const filteredBooks = allBooks.filter(
+  (book) =>
+    Array.isArray(book.genres) &&
+    book.genres.some((genre) => genre.title?.toLowerCase() === "horror")
+);
+ 
    
     
 

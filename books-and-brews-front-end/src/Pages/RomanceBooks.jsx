@@ -9,6 +9,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 //import the requiredmodules
 import {Pagination, Navigation} from "swiper/modules";
+// imported use context and context/data
+import { useContext } from "react";
+import { DataContext } from "../Context/DataContext";
 
 
 
@@ -17,9 +20,20 @@ import {Pagination, Navigation} from "swiper/modules";
 
 const RomanceBooks = () => {
 
-   const [books, setBooks] = useState([]);
-   const filteredBooks = books.filter((book) => book.genre === "romance");
+   /* const [books, setBooks] = useState([]);
+   const filteredBooks = books.filter((book) => book.genre === "romance"); */
+
+       //imports book data from datacontext
+   const { allBooks, isLoading } = useContext(DataContext);
    
+     if (isLoading) return <p>Loading romancebooks...</p>;
+   //established filteredbooks as allbooks port
+      const filteredBooks = allBooks.filter(
+  (book) =>
+    Array.isArray(book.genres) &&
+    book.genres.some((genre) => genre.title?.toLowerCase() === "romance")
+);
+
     
 
 /*     useEffect(() => {
