@@ -34,9 +34,11 @@ const Footer = () => {
                         <input 
                             type="email"
                             placeholder="Please enter your email"
-                            className="w-full px-4 py-2 rounded-1-md text-black bg-white"
+                            className="w-full h-1/2 px-4 py-2 rounded-1-md text-black bg-white"
                         />
                         <SurpriseButton /> 
+                        
+                        
                     </div>
                 </div>
             </div>
