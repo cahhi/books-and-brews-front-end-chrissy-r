@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { DataContext } from "../Context/DataContext";
 import { useState } from "react";
 import { useEffect } from "react";
-import BookCard from "./Books/BookCard";
+import BookCard from "../Components/BookCard";
 import {Swiper, SwiperSlide} from "swiper/react"; //importing swiper react components
 //importing swiper styles
 import "swiper/css"; 

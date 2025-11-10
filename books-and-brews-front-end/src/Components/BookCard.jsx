@@ -1,6 +1,6 @@
 import React from "react";
 import { FaShoppingBasket } from "react-icons/fa";
-import { getBookCover } from "../../Classes/getBookCover";
+import { getBookCover } from "../Classes/getBookCover";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 

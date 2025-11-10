@@ -14,7 +14,7 @@ const Footer = () => {
         <footer className="bg-amber-800 text-white py-10 px-4">
 
             {/* This will be my top section */}
-            <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-8">
 
                 {/*This is going to be my left side - here I will add the logo  */}
                 <div className="md:w-1/2 w-full ">
@@ -36,7 +36,7 @@ const Footer = () => {
                             placeholder="Please enter your email"
                             className="w-full h-1/2 px-4 py-2 rounded-1-md text-black bg-white"
                         />
-                        <SurpriseButton /> 
+                        <SurpriseButton />
                         
                         
                     </div>
@@ -44,7 +44,7 @@ const Footer = () => {
             </div>
             
             {/* This will be the bottom section of my footer */}
-            <div className="container mx-auto flex flex-col md:flex-row justify-between items-center mt-10 border-t border-gray-700 pt-6">
+            <div className="container mx-auto flex flex-col md:flex-row justify-between items-center mt-5 border-t border-gray-700 pt-2">
 
             {/* Wanted to add privacy links to the left side of my footer */}
                 <ul>

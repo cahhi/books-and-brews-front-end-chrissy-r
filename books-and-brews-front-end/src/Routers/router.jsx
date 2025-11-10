@@ -4,6 +4,7 @@ import Home from "../Pages/Home.jsx";
 import About from "../Pages/About.jsx";
 import Login from "../Components/Login.jsx";
 import Register from "../Components/Register.jsx";
+import HomeAdmin from "../Pages/admin/HomeAdmin.jsx";
 
 
 
@@ -23,6 +24,8 @@ const router = createBrowserRouter([
             {path: "/login", element: <Login />//login route
             },
             {path: "/register", element: <Register />//Register route
+            },
+            {path: "/admin/home", element: <HomeAdmin />   
             }
         ]
     },

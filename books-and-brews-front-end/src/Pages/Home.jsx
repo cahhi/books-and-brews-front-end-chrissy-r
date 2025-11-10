@@ -10,6 +10,7 @@ import ExampleBooks from "./examplePage";
 
 import { useContext } from "react";
 import { DataContext } from "../Context/DataContext";
+import HomeAdmin from "./admin/HomeAdmin";
 
 
  const Home = () => {

@@ -90,7 +90,7 @@ const Register = () => {
                         <button onClick={handleSubmit} className="bg-orange-900 hover:bg-orange-950 text-white font-bold py-2 px-8 rounded focus:outline-none cursor-pointer">Let's Go!</button>
                     </div>
                 </form>
-                <p className="align-baseline font-medium my-4 text-sm">We can't wait to read with you!</p>
+                <p className="align-baseline font-medium my-4 text-sm">Have an account? Log in <Link to="/login" className="text-yellow-600 hover:text=yellow-800">here.</Link></p>
                
                 {/* Wanted to create a google sign in for users */}
                 <div>

@@ -11,8 +11,8 @@ const SurpriseButton = () => { //reusable component that offers users a surprise
 
 
     return (
-        <div className="relative right-4 -mt-11">
-            <button className="confetti-button" onClick={handleClick}>
+        <div >
+            <button className="confetti-button relative right-4 -mt-11" onClick={handleClick}>
                 Subscribe
             </button>
             {showConfetti && <Confetti />}
