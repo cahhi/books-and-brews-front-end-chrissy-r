@@ -39,7 +39,6 @@ export const DataProvider = ({children}) => {
                 let description = new Description(
                     book.description.id,
                     book.description.summary,
-                    book.description.isTrending,
                     book.description.salesPrice,
                     book.description.originalPrice
                 );
@@ -114,10 +113,13 @@ export const DataProvider = ({children}) => {
         }
     }
 
+
+        
     //utilize the useEffect hook to ensure all three fetching funcitons are called when the component first loads
     useEffect(() => {
         fetchBooks();
         fetchAuthors();
+        fetchGenres();
      }, []);
 
      //checking that the state variables for holding data are not null and that this hook executes anytime that a change is detected 

@@ -1,8 +1,7 @@
 export default class Description {
 
-    constructor(summary, isTrending, salesPrice, originalPrice) {
+    constructor(summary,salesPrice, originalPrice) {
         this.summary = summary;
-        this.isTrending = isTrending;
         this.salesPrice = salesPrice;
         this.originalPrice = originalPrice;
     }
@@ -10,7 +9,6 @@ export default class Description {
     isValid() {
         return (
             this.summary.trim() &&
-            this.isTrending &&
             this.salesPrice && 
             this.originalPrice
         );
