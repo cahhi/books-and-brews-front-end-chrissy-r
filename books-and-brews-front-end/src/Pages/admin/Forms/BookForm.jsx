@@ -150,7 +150,7 @@ const BookForm = () => {
                         {/* This is my book title input */}
                         <div className="">
                             <FormInput 
-                                id='bookTitle'
+                                id='title'
                                 label='Book Title:'
                                 value={bookData.title}
                                 handleChange={handleBookChange}
@@ -162,7 +162,7 @@ const BookForm = () => {
                         </div>
                         {/* This is my author input */}
                         <div>
-                            <FormSelect id='authorId'label="Book Author: "handleChange={handleBookChange}>
+                            <FormSelect id='authorId' label="Book Author: "handleChange={handleBookChange}>
                                 <option value = ''>
                                     Select an author
                                 </option>
@@ -209,8 +209,8 @@ const BookForm = () => {
                         <FormInput 
                                 id='salesPrice'
                                 label='Sales Price:'
-                                value={bookData.salesPrice}
-                                handleChange={handleBookChange}
+                                value={descriptionData.salesPrice}
+                                handleChange={handleDescriptionChange}
                             />
                         <ErrorInput
                             hasError={
@@ -224,12 +224,12 @@ const BookForm = () => {
                         <FormInput 
                                 id='originalPrice'
                                 label='Original Price:'
-                                value={bookData.originalPrice}
-                                handleChange={handleBookChange}
+                                value={descriptionData.originalPrice}
+                                handleChange={handleDescriptionChange}
                             />
                         <ErrorInput
                             hasError={
-                                hasErrors && bookData.originalPrice === ''
+                                hasErrors && descriptionData.originalPrice === ''
                             } 
                             message={errorMessage['originalPriceError']}
                            />
