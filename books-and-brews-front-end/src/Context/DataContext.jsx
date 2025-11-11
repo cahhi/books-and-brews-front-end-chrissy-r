@@ -10,9 +10,9 @@ export const DataProvider = ({children}) => {
     const [isLoading, setIsLoading]  = useState(true);
 
     //create three state variable to hold the data of books, genres, and authors and setting the intial state to null
-    const [ allBooks, setAllBooks ] = useState(null);
-    const [ allAuthors, setAllAuthors ] = useState(null);
-    const [ allGenres, setAllGenres ] = useState(null);
+    const [ allBooks, setAllBooks ] = useState([]); 
+    const [ allAuthors, setAllAuthors ] = useState([]);
+    const [ allGenres, setAllGenres ] = useState([]);
 
     //defining three async functions that make calls to the API endpoints
     const fetchBooks = async () => {
@@ -51,21 +51,79 @@ export const DataProvider = ({children}) => {
 
         } catch(error) {
             console.error(error)
+            
 
         } finally {
             setIsLoading(false); // mark loading complete
+            setAllBooks(books);
 
         }
+    };
+
+    //modeling this after fetchBooks
+    const fetchAuthors = async () => {
+
+        const authors = [];
+
+        try {
+            const response = await fetch('/api/authors');
+            const data = await response.json();
+
+            data.forEach(author => {
+                let newAuthor = new Author(
+                    author.id,
+                    author.firstName,
+                    author.lastName,
+                )
+                authors.push(newAuthor);
+            });
+
+        } catch(error) {
+            console.error(error);
+            
+
+        }finally {
+            setIsLoading(false);
+            setAllAuthors(authors);
+
+        }
+    };
+
+    //genre which is modeled after fetchAuthors
+    const fetchGenres = async () => {
+        const genres = [];
+
+        try {
+            const response = await fetch('/api/genres');
+            const data = await response.json();
+
+            data.forEach(genre => {
+                let newGenre = new Genre(
+                    genre.id,
+                    genre.title,
+                )
+                genres.push(newGenre);
+            });
+
+        }catch(error) {
+            console.error(error);
+
+        }finally {
+            setIsLoading(false);
+            setAllGenres(genres);
+        }
     }
+
     //utilize the useEffect hook to ensure all three fetching funcitons are called when the component first loads
     useEffect(() => {
         fetchBooks();
+        fetchAuthors();
      }, []);
 
      //checking that the state variables for holding data are not null and that this hook executes anytime that a change is detected 
 
 
-    return <DataContext.Provider value={{isLoading, allBooks, fetchBooks}}>{children}</DataContext.Provider>
+    return <DataContext.Provider value={{isLoading, allBooks, allAuthors, allGenres, fetchGenres, fetchAuthors, fetchBooks}}>{children}</DataContext.Provider>
      
     /* return <DataContext.Provider value={{allBooks, allAuthors, allGenres, isLoading}}>{children}</DataContext.Provider> */
 }

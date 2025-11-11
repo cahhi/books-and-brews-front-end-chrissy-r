@@ -13,8 +13,9 @@ import HomeAdmin from "../Pages/admin/HomeAdmin";
 
 const userMenu = [
     { name: "Admin Home", href:"/admin/home" },
-    { name: "Orders", href:"/orders" },
-    { name: "Shopping Cart", href:"/cart" },
+    { name: "Books", href:"/admin/books" },
+    { name: "Authors", href:"/admin/authors" },
+    { name: "Genres", href:"/admin/genres" },
 ]
 
 
