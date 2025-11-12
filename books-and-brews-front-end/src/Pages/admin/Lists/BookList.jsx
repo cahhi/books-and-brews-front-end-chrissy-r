@@ -17,15 +17,50 @@ const BookList = () => {
         setCurrentBooks([...allBooks]);
     }, [allBooks]);
 
+    const deleteBook = async id => {
+        try {
+            const response = await fetch(`http://localhost:8080/api/books/delete/${id}`,
+            {
+                method: 'DELETE',
+            },
+        );
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(
+                    errorData.message || `ERROR - Status ${response.status}`,
+                );
+            } else {
+                fetchBooks();
+            }
+         }catch(error) {
+            console.error(error.message);
+         }finally {
+
+         }
+    };
+
+
+    const handleDelete = id => {
+        let deleteConfirmed = confirm(`Are you sure you want to delete this book?`);
+        if(deleteConfirmed){
+            deleteBook(id);
+        }
+    };
+
     let booksJSX = currentBooks.map(book => {
 
         return (
             <tr key={book.id}>
-                <td>{book.id}</td>
                 <td>{book.title}</td>
                 <td>{book.author.getFullName()}</td>
-                <td>
-                    Delete
+                <td className="delete">
+                    <span onClick={() => handleDelete(book.id)}> 
+                        <i 
+                        className="delete"
+                        title={`Delete ${book.title}`}
+                        >Delete</i>
+                    </span>
+                    
                 </td>
             </tr>
         );
@@ -48,9 +83,6 @@ const BookList = () => {
                     <table>
                         <thead>
                             <tr>
-                                <th width='100px'>
-                                    Book Id                                     
-                                </th>
                                 <th width='300px'>
                                     Title
                                 </th>

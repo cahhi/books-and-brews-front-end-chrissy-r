@@ -125,7 +125,6 @@ const AuthorList = () => {
 
         return (
             <tr key={author.id}>
-                <td>{author.id}</td>
                 <td>{author.firstName}</td>
                 <td>{author.lastName}</td>
                 <td>{getViewBooksJSX}</td>
