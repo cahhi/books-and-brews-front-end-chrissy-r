@@ -1,3 +1,4 @@
+//creating a new bookDTO
 export default class BookDTO {
 
     constructor(title, authorId, genreIds, description) {

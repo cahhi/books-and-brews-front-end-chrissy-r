@@ -1,3 +1,4 @@
+//resuable text area component for a form
 const FormTextArea = ({id, label, value, handleChange}) => {
 
     return (

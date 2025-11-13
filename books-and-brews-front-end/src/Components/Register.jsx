@@ -19,10 +19,7 @@ const Register = () => {
             handleSubmit,
             watch,
             formState: { errors },
-        } = useForm()
-    
-        const onSubmit = (data) => console.log(data);
-    
+        } = useForm() 
         const handleGoogleSignIn = () => {
             
         }

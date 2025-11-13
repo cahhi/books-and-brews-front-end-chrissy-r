@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { FaGoogleDrive } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 
-
+//created a log in page 
 
 const Login = () => {
 
@@ -20,8 +20,6 @@ const Login = () => {
         watch,
         formState: { errors },
     } = useForm()
-
-    const onSubmit = (data) => console.log(data);
 
     const handleGoogleSignIn = () => {
         

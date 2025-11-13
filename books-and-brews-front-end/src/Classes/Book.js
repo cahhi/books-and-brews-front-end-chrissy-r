@@ -1,3 +1,4 @@
+//Initializing a new book oject
 export default class Book {
 
     constructor(id, title, author, genres, description) {

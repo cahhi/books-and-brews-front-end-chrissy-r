@@ -1,5 +1,6 @@
+//reusable loading component
 const Loading = ({ dataName }) => {
-    let data = dataName || 'data';
+    let data = dataName || 'data'; //specific name or default data if name not found
 
     return (
         <main className="main-content">

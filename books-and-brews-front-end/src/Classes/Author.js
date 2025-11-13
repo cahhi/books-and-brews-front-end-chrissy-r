@@ -1,3 +1,4 @@
+//Initializing a new author object
 export default class Author {
 
     constructor(id, firstName, lastName) {
@@ -6,7 +7,7 @@ export default class Author {
         this.lastName = lastName;
     }
 
-    getFullName() {
+    getFullName() { //using funtion to return author name as full name
         return `${this.firstName} ${this.lastName}`;
     }
 }

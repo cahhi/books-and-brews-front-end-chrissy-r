@@ -1,3 +1,4 @@
+//reusbale component that allows the passing of customizable props
 const GenreCheckbox = ({id, name, label, isChecked, handleChange}) => {
     return(
         <div>

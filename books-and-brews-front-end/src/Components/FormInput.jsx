@@ -1,3 +1,4 @@
+//reusable form input component
 const FormInput = ({id, label, value, handleChange}) => {
 
     return (

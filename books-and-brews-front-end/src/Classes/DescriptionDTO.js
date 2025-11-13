@@ -1,3 +1,4 @@
+//creating a new descriptionDTO instance
 export default class DescriptionDTO {
 
     constructor(summary,salesPrice, originalPrice, image) {

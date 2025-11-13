@@ -3,79 +3,74 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { DataContext } from "../../../Context/DataContext";
-import {BookDTO, DescriptionDTO} from '../../../Classes/exports';
+import { BookDTO, DescriptionDTO } from "../../../Classes/exports";
 import GenreCheckbox from "../../../Components/GenreCheckbox";
 import FormInput from "../../../Components/FormInput";
 import ErrorInput from "../../../Components/ErrorInput";
 import FormSelect from "../../../Components/FormSelect";
 import FormTextArea from "../../../Components/FormTextArea";
 
-
-let startingBookData = { title: '', authorId: '', genreIds: [] };
+let startingBookData = { title: "", authorId: "", genreIds: [] };
 
 let startingDescriptionData = {
-    summary: '',
-    salesPrice: '',
-    originalPrice: '',
-    image:'nocover'
+    summary: "",
+    salesPrice: "",
+    originalPrice: "",
+    image: "nocover",
 };
 
 let errorMessage = {
-    titleError: 'Please provide a book title!',
-    authorError: 'Please provide an author',
-    summaryError: 'Please provide a summary of the book.',
-    salesPriceError: 'Please provide a sales price for the book',
-    originalPriceError: 'Please provide the original/retail price of the book',
-    genreError: 'Please select a genre',
-    imageError: 'Please add an image'
+    titleError: "Please provide a book title!",
+    authorError: "Please provide an author",
+    summaryError: "Please provide a summary of the book.",
+    salesPriceError: "Please provide a sales price for the book",
+    originalPriceError: "Please provide the original/retail price of the book",
+    genreError: "Please select a genre",
+    imageError: "Please add an image",
 };
 
-
-
 const BookForm = () => {
-
-    const {allAuthors, allGenres, fetchBooks} = use(DataContext);
+    const { allAuthors, allGenres, fetchBooks } = use(DataContext);
 
     const [bookData, setBookData] = useState(startingBookData);
-    const [descriptionData, setDescriptionData] = useState(startingDescriptionData);
+    const [descriptionData, setDescriptionData] = useState(
+        startingDescriptionData
+    );
     const [checkboxes, setCheckboxes] = useState([]);
     const [hasErrors, setHasErrors] = useState(false);
     const [confirmMessage, setConfirmMessage] = useState("");
     const bookAuthors = [...allAuthors];
     const bookGenres = [...allGenres];
 
-
-
     const navigate = useNavigate();
 
-    const saveNewBook = async newBookDTO => {
+    const saveNewBook = async (newBookDTO) => {
         try {
-            const response = await fetch('http://localhost:8080/api/books/add',{
-                method: 'POST',
+            const response = await fetch("http://localhost:8080/", {
+                method: "POST",
                 headers: {
-                    'Content-Type': 'application/json',
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify(newBookDTO),
-            },
-        );
+            });
 
-        if(!response.ok) {
-            const errorData = await response.json();
-            throw new Error(
-                errorData.message || `ERROR - Status ${response.status}`,
-            );
-        }else {
-            fetchBooks();
-            navigate('/admin/books');
-        }
-        }catch(error){
-            console.error(error.message)
-        }finally{
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(
+                    errorData.message || `ERROR - Status ${response.status}`
+                );
+            } else {
+                fetchBooks();
+                navigate("/admin/books");
+            }
+        } catch (error) {
+            console.error(error.message);
+        } finally {
             //want to give user confirmation if this worked or not
         }
     };
 
-    const handleBookChange = e => {
+    const handleBookChange = (e) => {
         let updatedBookData = {
             ...bookData,
             [e.target.id]: e.target.value,
@@ -83,49 +78,48 @@ const BookForm = () => {
         setBookData(updatedBookData);
     };
 
-    const handleDescriptionChange = e => {
+    const handleDescriptionChange = (e) => {
         let updatedDescriptionData = {
             ...descriptionData,
             [e.target.id]: e.target.value,
         };
         setDescriptionData(updatedDescriptionData);
     };
-    const handleGenreChange = e => {
+    const handleGenreChange = (e) => {
         let updatedCheckboxes = [...checkboxes];
         updatedCheckboxes[e.target.value] = e.target.checked;
         setCheckboxes(updatedCheckboxes);
     };
 
-    const handleSubmit = e => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         checkboxes.forEach((checkbox, index) => {
-            if(checkbox) bookData.genreIds.push(index);
+            if (checkbox) bookData.genreIds.push(index);
             setConfirmMessage("Your book was added successfully!");
-        }  
-    );
+        });
 
         let descriptionDTO = new DescriptionDTO(
             descriptionData.summary,
             descriptionData.salesPrice,
             descriptionData.originalPrice,
-            'nocover'
+            "nocover"
         );
-        
+
         let bookDTO = new BookDTO(
             bookData.title,
             bookData.authorId,
             bookData.genreIds,
-            descriptionDTO,
+            descriptionDTO
         );
 
-        if(!descriptionDTO.isValid() || !bookDTO.isValid()) {
+        if (!descriptionDTO.isValid() || !bookDTO.isValid()) {
             setHasErrors(true);
-        }else {
+        } else {
             saveNewBook(bookDTO);
         }
     };
 
-    let authorOptionsJSX = bookAuthors.map(author => {   
+    let authorOptionsJSX = bookAuthors.map((author) => {
         return (
             <option key={author.id} id={author.id} value={author.id}>
                 {author.firstName} {author.lastName}
@@ -133,134 +127,131 @@ const BookForm = () => {
         );
     });
 
-    let genreChoiceJSX = bookGenres.map(genre => {
+    let genreChoiceJSX = bookGenres.map((genre) => {
         return (
             <GenreCheckbox
-            id={genre.id}
-            key={genre.id}
-            name='genreIds'
-            label={genre.title}
-            isChecked={checkboxes[genre.id]||false}
-            handleChange={handleGenreChange}
+                id={genre.id}
+                key={genre.id}
+                name="genreIds"
+                label={genre.title}
+                isChecked={checkboxes[genre.id] || false}
+                handleChange={handleGenreChange}
             />
         );
     });
-    
-    return (
 
+    return (
         <main>
-            <h1 className="text-center "><b>Add a new book</b></h1>
+            <h1 className="text-center ">
+                <b>Add a new book</b>
+            </h1>
             <form className="max-w-md mx-auto py-3 px-1">
                 <div>
                     <div>
                         {/* This is my book title input */}
                         <div className="">
-                            <FormInput 
-                                id='title'
-                                label='Book Title:'
+                            <FormInput
+                                id="title"
+                                label="Book Title:"
                                 value={bookData.title}
                                 handleChange={handleBookChange}
                             />
-                            <ErrorInput 
-                                hasError={hasErrors && bookData.title === ''}
-                                msg={errorMessage['titleError']}
+                            <ErrorInput
+                                hasError={hasErrors && bookData.title === ""}
+                                msg={errorMessage["titleError"]}
                             />
                         </div>
                         {/* This is my author input */}
                         <div>
-                            <FormSelect id='authorId' label="Book Author: "handleChange={handleBookChange}>
-                                <option value = ''>
-                                    Select an author
-                                </option>
+                            <FormSelect
+                                id="authorId"
+                                label="Book Author: "
+                                handleChange={handleBookChange}
+                            >
+                                <option value="">Select an author</option>
                                 {authorOptionsJSX}
                             </FormSelect>
-                           <ErrorInput
-                            hasError={
-                                hasErrors && bookData.authorId === 0
-                            } 
-                            message={errorMessage['authorError']}
-                           />
+                            <ErrorInput
+                                hasError={hasErrors && bookData.authorId === 0}
+                                message={errorMessage["authorError"]}
+                            />
                         </div>
-                         {/* This is my genre input */}
+                        {/* This is my genre input */}
                         <div>
                             <h2>Genres: </h2>
-                           <ErrorInput
-                            hasError={
-                                hasErrors && checkboxes.length === 0
-                            } 
-                            message={errorMessage['genreError']}
-                           />
+                            <ErrorInput
+                                hasError={hasErrors && checkboxes.length === 0}
+                                message={errorMessage["genreError"]}
+                            />
                             <div className="genreCheckboxes">
                                 {genreChoiceJSX}
-
                             </div>
                         </div>
                         <div>
-                        {/* This is my summary input */}
-                        <FormTextArea 
-                            id='summary'
-                            
-                            label='Book Summary:'
-                            value={descriptionData.summary}
-                            handleChange={handleDescriptionChange}    
-                        />
-                        <ErrorInput
-                            hasError={
-                                hasErrors && descriptionData.summary === ''
-                            } 
-                            message={errorMessage['summaryError']}
-                           />
-                    </div>
-                      <div>
-                        {/* This is my sales price input */}
-                        <FormInput 
-                                id='salesPrice'
-                                label='Sales Price:'
+                            {/* This is my summary input */}
+                            <FormTextArea
+                                id="summary"
+                                label="Book Summary:"
+                                value={descriptionData.summary}
+                                handleChange={handleDescriptionChange}
+                            />
+                            <ErrorInput
+                                hasError={
+                                    hasErrors && descriptionData.summary === ""
+                                }
+                                message={errorMessage["summaryError"]}
+                            />
+                        </div>
+                        <div>
+                            {/* This is my sales price input */}
+                            <FormInput
+                                id="salesPrice"
+                                label="Sales Price:"
                                 value={descriptionData.salesPrice}
                                 handleChange={handleDescriptionChange}
                             />
-                        <ErrorInput
-                            hasError={
-                                hasErrors && bookData.salesPrice === ''
-                            } 
-                            message={errorMessage['salesPriceError']}
-                           />
-                    </div>
-                      <div>
-                        {/* This is my original input */}
-                        <FormInput 
-                                id='originalPrice'
-                                label='Original Price:'
+                            <ErrorInput
+                                hasError={
+                                    hasErrors && bookData.salesPrice === ""
+                                }
+                                message={errorMessage["salesPriceError"]}
+                            />
+                        </div>
+                        <div>
+                            {/* This is my original input */}
+                            <FormInput
+                                id="originalPrice"
+                                label="Original Price:"
                                 value={descriptionData.originalPrice}
                                 handleChange={handleDescriptionChange}
                             />
-                        <ErrorInput
-                            hasError={
-                                hasErrors && descriptionData.originalPrice === ''
-                            } 
-                            message={errorMessage['originalPriceError']}
-                           />
+                            <ErrorInput
+                                hasError={
+                                    hasErrors &&
+                                    descriptionData.originalPrice === ""
+                                }
+                                message={errorMessage["originalPriceError"]}
+                            />
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div className="flex  justify-between mt-6">
-            <button type='submit' className="bookSubmit" onClick={handleSubmit}>Add Book</button>
-                {
-                    confirmMessage && ( //added a confirmation for when users add a book
-                        <p>{confirmMessage}</p>
-                    )
-                }
-            <Link to="/admin/books" className="bookSubmit">
-                View Books
-            </Link>
-            </div>
-
-          </form>
+                <div className="flex  justify-between mt-6">
+                    <button
+                        type="submit"
+                        className="bookSubmit"
+                        onClick={handleSubmit}
+                    >
+                        Add Book
+                    </button>
+                    {confirmMessage && <p>{confirmMessage //added a confirmation for when users add a book
+                        }</p>}
+                    <Link to="/admin/books" className="bookSubmit">
+                        View Books
+                    </Link>
+                </div>
+            </form>
         </main>
-        //TODO: Create a buton 
-    )
-
-    
-}
+    );
+};
 
 export default BookForm;
