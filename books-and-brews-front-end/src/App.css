@@ -55,3 +55,21 @@ i {
 .summary:focus {
   border: 3px solid #555
 }
+
+.bookSubmit {
+  background-color: #7c2d12;
+  font-weight: 700;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  border-radius: 0.25em;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s 0.3 ease;
+  color: white;
+}
+
+.bookSubmit:hover{
+  background-color: #431407;
+}

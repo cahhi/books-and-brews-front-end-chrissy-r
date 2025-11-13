@@ -22,14 +22,6 @@ const FantasyBooks = () => {
         Array.isArray(book.genres) &&
         book.genres.some((genre) => genre.title.toLowerCase() === "fantasy")
     );
-     
-
-   
-    
-
-    /* useEffect(() => {
-        fetch("books.json").then(Response => Response.json()).then((data) => setBooks(data))
-    }, [])  */ 
     
         return(
             <div className="py-10">

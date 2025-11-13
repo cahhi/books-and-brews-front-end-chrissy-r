@@ -40,6 +40,7 @@ const BookForm = () => {
     const [descriptionData, setDescriptionData] = useState(startingDescriptionData);
     const [checkboxes, setCheckboxes] = useState([]);
     const [hasErrors, setHasErrors] = useState(false);
+    const [confirmMessage, setConfirmMessage] = useState("");
     const bookAuthors = [...allAuthors];
     const bookGenres = [...allGenres];
 
@@ -99,7 +100,9 @@ const BookForm = () => {
         e.preventDefault();
         checkboxes.forEach((checkbox, index) => {
             if(checkbox) bookData.genreIds.push(index);
-        });
+            setConfirmMessage("Your book was added successfully!");
+        }  
+    );
 
         let descriptionDTO = new DescriptionDTO(
             descriptionData.summary,
@@ -146,8 +149,8 @@ const BookForm = () => {
     return (
 
         <main>
-            <h1>Add a new book</h1>
-            <form>
+            <h1 className="text-center "><b>Add a new book</b></h1>
+            <form className="max-w-md mx-auto py-3 px-1">
                 <div>
                     <div>
                         {/* This is my book title input */}
@@ -240,12 +243,19 @@ const BookForm = () => {
                     </div>
                 </div>
             </div>
-
-            <button type='submit' className="hover:bg-yellow-500" onClick={handleSubmit}>Add Book</button>
-            </form>
-            <Link to="/admin/books">
+            <div className="flex  justify-between mt-6">
+            <button type='submit' className="bookSubmit" onClick={handleSubmit}>Add Book</button>
+                {
+                    confirmMessage && ( //added a confirmation for when users add a book
+                        <p>{confirmMessage}</p>
+                    )
+                }
+            <Link to="/admin/books" className="bookSubmit">
                 View Books
             </Link>
+            </div>
+
+          </form>
         </main>
         //TODO: Create a buton 
     )
