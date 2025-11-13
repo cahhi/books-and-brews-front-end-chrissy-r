@@ -17,6 +17,7 @@ let startingDescriptionData = {
     summary: '',
     salesPrice: '',
     originalPrice: '',
+    image:'nocover'
 };
 
 let errorMessage = {
@@ -24,8 +25,9 @@ let errorMessage = {
     authorError: 'Please provide an author',
     summaryError: 'Please provide a summary of the book.',
     salesPriceError: 'Please provide a sales price for the book',
-    originalPriceError: 'Please procvide the original/retail price of the book',
-    genreError: 'Please select a genre'
+    originalPriceError: 'Please provide the original/retail price of the book',
+    genreError: 'Please select a genre',
+    imageError: 'Please add an image'
 };
 
 
@@ -66,7 +68,7 @@ const BookForm = () => {
             navigate('/admin/books');
         }
         }catch(error){
-
+            console.error(error.message)
         }finally{
             //want to give user confirmation if this worked or not
         }
@@ -102,7 +104,8 @@ const BookForm = () => {
         let descriptionDTO = new DescriptionDTO(
             descriptionData.summary,
             descriptionData.salesPrice,
-            descriptionData.originalPrice
+            descriptionData.originalPrice,
+            'nocover'
         );
         
         let bookDTO = new BookDTO(
@@ -193,6 +196,7 @@ const BookForm = () => {
                         {/* This is my summary input */}
                         <FormTextArea 
                             id='summary'
+                            
                             label='Book Summary:'
                             value={descriptionData.summary}
                             handleChange={handleDescriptionChange}    
@@ -237,9 +241,11 @@ const BookForm = () => {
                 </div>
             </div>
 
-            <button type='submit' onClick={handleSubmit}>Add Book</button>
+            <button type='submit' className="hover:bg-yellow-500" onClick={handleSubmit}>Add Book</button>
             </form>
-            <button>View Books</button> 
+            <Link to="/admin/books">
+                View Books
+            </Link>
         </main>
         //TODO: Create a buton 
     )

@@ -15,7 +15,6 @@ const userMenu = [
     { name: "Admin Home", href:"/admin/home" },
     { name: "Books", href:"/admin/books" },
     { name: "Authors", href:"/admin/authors" },
-    { name: "Genres", href:"/admin/genres" },
 ]
 
 
@@ -53,7 +52,7 @@ const Navbar = () => {
                                     {
                                         userMenu.map((menuItem) => (
                                             <li key={menuItem.name} onClick={() => setIsMenuOpen(false)}> {/*When the user clicks on an option from the dropdown menu it will close*/}
-                                                <Link to={menuItem.href} className="block px-4 py-2 text-sm hover:bg-[#DAA520] cursor-pointer">
+                                                <Link to={menuItem.href} className="block px-4 py-2 text-sm hover:bg-[#DAA520] cursor-pointer bg-white">
                                                     {menuItem.name}
                                                 </Link>
                                             </li>

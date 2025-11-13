@@ -47,6 +47,7 @@ const BookList = () => {
         }
     };
 
+
     let booksJSX = currentBooks.map(book => {
 
         return (
@@ -59,27 +60,27 @@ const BookList = () => {
                         className="delete"
                         title={`Delete ${book.title}`}
                         >Delete</i>
-                    </span>
-                    
+                    </span>    
                 </td>
+                 <td>
+                   
+                </td>
+                
             </tr>
         );
     });
 
     return (
 
-                <main>
-                    <h2>All Books</h2>
-                    {currentBooks.length < allBooks.length && (
-                        <p>
-                            <em>
-                                Displaying {currentBooks.length} of {' '} {allBooks.length} books.
-                            </em>{' '}
-                            <Link>
-                            View All
-                            </Link>
-                        </p>
-                    )}
+            <main>
+                 <h2>All Books</h2>
+                      {currentBooks.length ? (
+                        <div>
+                            {currentBooks.length > 10 && (
+                                <p>
+                                    Add a {' '} <Link to='/admin/books/add'>new book</Link>
+                                </p>
+                            )}
                     <table>
                         <thead>
                             <tr>
@@ -93,7 +94,13 @@ const BookList = () => {
                         </thead>
                         <tbody>{booksJSX}</tbody>
                     </table>
-        
+                    <p>Don't see a specific book? Add one <Link to='/admin/books/add'>here!</Link></p>
+                    </div>
+                        ): (
+                            <p>
+                                <em>No books to display. Add book <Link to='/admin/books/add'> here.</Link></em>
+                            </p>
+                        )}
                 </main>
     );
         

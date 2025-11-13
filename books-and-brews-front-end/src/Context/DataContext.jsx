@@ -40,7 +40,8 @@ export const DataProvider = ({children}) => {
                     book.description.id,
                     book.description.summary,
                     book.description.salesPrice,
-                    book.description.originalPrice
+                    book.description.originalPrice,
+                    book.description.image
                 );
 
                 let newBook = new Book(book.id, book.title, author, genres, description); //creating a newBook object that I can use anywhere in my code

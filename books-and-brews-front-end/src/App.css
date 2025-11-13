@@ -4,3 +4,54 @@
   border-color: #007bff;
   color: #fff;
 }
+
+table {
+  border: 1px solid;
+  width: 100%;
+  empty-cells: hide;
+}
+
+th, td {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid black;
+  border: 1px solid;
+}
+
+th {
+  height: 70px;
+}
+
+tr:hover {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid black;
+  background-color: bisque;
+}
+
+.delete:hover{
+ background-color: red;
+ cursor: pointer;
+}
+
+.delete{
+  justify-content: center;
+}
+
+td.save, td.delete {
+  padding: 1px 3px;
+  width: 80px;
+  justify-content: center;
+}
+.save:hover{
+  background-color: green;
+  cursor: pointer;
+}
+
+i {
+  justify-content: center;
+}
+
+.summary:focus {
+  border: 3px solid #555
+}
