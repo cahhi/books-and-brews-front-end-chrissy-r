@@ -8,6 +8,8 @@ import { TfiShoppingCartFull } from "react-icons/tfi";
 import { FaHome } from "react-icons/fa";
 import { GrLogin } from "react-icons/gr";
 import { useState } from "react";
+import { SiCoffeescript } from "react-icons/si";
+import { SiBuymeacoffee } from "react-icons/si";
 
 
 const userMenu = [
@@ -18,7 +20,7 @@ const userMenu = [
 
 
 const Navbar = () => {
-    const currentUser = true; //i am using this to test when a user is "logged in" or not
+    const [isLoggedIn, setIsLoggedIn] = useState('');//i am using this to test when a user is "logged in" or not
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     return (
@@ -54,7 +56,7 @@ const Navbar = () => {
                 <div className="relative flex items-center md:space-x-3 space-x-2">
                     <div>
                         {
-                            currentUser ? (
+                            isLoggedIn ? (
                                 <>
                                     <button
                                         onClick={() =>
@@ -103,16 +105,21 @@ const Navbar = () => {
                     </button>
 
                     {/*orders doesnt exist, should this be here?*/}
-                    <Link
-                        to="/orders"
-                        className="bg-[#A52A2A] p-1 sm:px-5 px-1 flex items-center rounded sm"
-                    >
+                   <div className="bg-[#A52A2A] p-1 sm:px-5 px-1 flex items-center rounded sm">
                         <TfiShoppingCartFull className="size-5" />
                         <span className="text-sm font">0</span>{" "}
                         {/*I want to show the number of items in the cart that a user has placed*/}
-                    </Link>
+                    </div>
                 </div>
             </nav>
+         <div >
+        <button
+          onClick={() => setIsLoggedIn(!isLoggedIn)}
+          className="flex justify-center text-black px-4 py-2 rounded relatiive top-3 -mt-7 md:gap-4 gap-2 ml-4"
+        >
+          {isLoggedIn ? <SiCoffeescript /> : <SiBuymeacoffee /> }
+        </button>
+      </div> 
         </header>
     );
 };

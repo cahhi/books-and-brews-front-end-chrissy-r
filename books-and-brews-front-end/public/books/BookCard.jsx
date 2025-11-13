@@ -32,7 +32,7 @@ const BookCard = ({ book }) => {
                     <p className="text-black-600 mb-5">
                         {book.description?.summary} {/* Can access the description object properties without recieving null - will recieve undefined */}
                     </p>
-                    <p className="font-medium mb-1">
+                    <p className="font-medium mb-5">
                         ${book.description.salesPrice}
                         <span className="line-through font-normal ml-2">
                             ${book.description.originalPrice}

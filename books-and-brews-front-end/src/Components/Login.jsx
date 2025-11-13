@@ -32,7 +32,7 @@ const Login = () => {
             <div className="w-full max-w-sm mx-auto bg-white shadow-md rounded px-7 pt-4 pb-5 mb-4">
                 <h2 className="text-xl font-semibold mb-4">Please log in</h2>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={handleSubmit()}>
 
                     {/* Asking users for email address */}
                     <div className="mb-4">

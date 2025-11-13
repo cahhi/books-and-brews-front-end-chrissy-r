@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { DataContext } from "../../../Context/DataContext";
 import { use } from "react";
+import { FcFullTrash } from "react-icons/fc";
 
 const BookList = () => {
     const { allBooks, fetchBooks } = use(DataContext);
@@ -50,37 +51,38 @@ const BookList = () => {
                 <td className="delete">
                     <span onClick={() => handleDelete(book.id)}>
                         <i className="delete" title={`Delete ${book.title}`}>
-                            Delete
                         </i>
+                        <div className="flex items-center justify-center">
+                            <FcFullTrash />
+                        </div>
                     </span>
                 </td>
-                <td></td>
             </tr>
         );
     });
 
     return (
         <main>
-            <h2>All Books</h2>
+            <h2 className="text-2xl font-bold text-center">All Books</h2>
             {currentBooks.length ? (
                 <div>
-                    {currentBooks.length > 10 && (
+                    {currentBooks.length > 100 && (
                         <p>
-                            Add a <Link to="/admin/books/add">new book</Link>
+                            <em>Add a <Link to="/admin/books/add">new book</Link></em>
                         </p>
                     )}
-                    <table>
+                    <table className="table-auto border-collapse w-full">
                         <thead>
                             <tr>
-                                <th width="300px">Title</th>
-                                <th width="300px">Author</th>
+                                <th width="px-4 py-2">Title</th>
+                                <th width="px-4 py-2">Author</th>
                             </tr>
                         </thead>
                         <tbody>{booksJSX}</tbody>
                     </table>
                     <p>
                         Don't see a specific book? Add one{" "}
-                        <Link to="/admin/books/add">here!</Link>
+                        <Link to="/admin/books/add" className="hover:text-orange-900 font-bold">here!</Link>
                     </p>
                 </div>
             ) : (

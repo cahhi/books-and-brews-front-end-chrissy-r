@@ -46,7 +46,7 @@ const BookForm = () => {
 
     const saveNewBook = async (newBookDTO) => {
         try {
-            const response = await fetch("http://localhost:8080/", {
+            const response = await fetch("http://localhost:8080/api/books/add", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -170,13 +170,13 @@ const AuthorList = () => {
 
     return (
         <main>
-            <h2>All Authors</h2>
+            <h2 className="text-2xl font-bold text-center">All Authors</h2>
             {currentAuthors.length ? (
                 <div>
-                    {currentAuthors.length > 10 && (
+                    {currentAuthors.length > 100 && (
                         <p>
                             Add a{" "}
-                            <Link to="/admin/authors/add">new author</Link>
+                            <Link to="/admin/authors/add" className="hover:text-orange-900 ">new author</Link>
                         </p>
                     )}
                     <table>
